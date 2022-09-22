@@ -6,9 +6,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:status_saver/constants/constant.dart';
 
-class getStatusProvider with ChangeNotifier {
+class GetStatusProvider with ChangeNotifier {
   List<FileSystemEntity> _getImages = [];
-
+  int num = 0;
   void setStatusImages() async {
     final status = await Permission.storage.request();
 
