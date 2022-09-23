@@ -51,19 +51,41 @@ class _Show_ScreenState extends State<Show_Screen> {
       body: Selector<GetStatusProvider, List<FileSystemEntity>>(
           selector: (_, value) => value.getStatusImages,
           builder: (context, snapshot, child) {
-            return ListView.builder(
+            return GridView.builder(
               itemCount: snapshot.length,
-              shrinkWrap: true,
-              primary: false,
+              padding: EdgeInsets.all(10),
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index) {
                 final data = snapshot[index];
                 return Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: Colors.black),
                   height: 200,
                   width: 200,
-                  child: Image.file(File(data.path)),
+                  child: Image.file(
+                    File(data.path),
+                    fit: BoxFit.fitHeight,
+                  ),
                 );
               },
             );
+
+            // return ListView.builder(
+            //   itemCount: snapshot.length,
+            //   shrinkWrap: true,
+            //   primary: false,
+            //   itemBuilder: (context, index) {
+            //     final data = snapshot[index];
+            //     return Container(
+            //       height: 200,
+            //       width: 200,
+            //       child: Image.file(File(data.path)),
+            //     );
+            //   },
+            // );
           }),
     );
   }

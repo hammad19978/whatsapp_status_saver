@@ -8,7 +8,6 @@ import 'package:status_saver/constants/constant.dart';
 
 class GetStatusProvider with ChangeNotifier {
   List<FileSystemEntity> _getImages = [];
-  int num = 0;
   void setStatusImages() async {
     final status = await Permission.storage.request();
 
